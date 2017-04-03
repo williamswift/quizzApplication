@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  Simple quiz app
 //
-//  Created by William Vivas 3/25/17
+//  Created by William Vivas. 3/25/17
 //  Copyright © 2016 WIlliam Vivas All rights reserved.
 //
 
