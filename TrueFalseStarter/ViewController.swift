@@ -11,11 +11,13 @@ import GameKit
 import AudioToolbox
 
 class ViewController: UIViewController {
-    
+    //Magic number has been removed
     let questionsPerRound = listOftriviaQuestions.count
     var questionsAsked = 0
     var correctQuestions = 0
     var indexOfSelectedQuestion: Int = 0
+    var previousQuestionsArray: [Int] = []
+    
     
     var gameSound: SystemSoundID = 0
     
@@ -45,6 +47,10 @@ class ViewController: UIViewController {
     func displayQuestion() {
         indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: listOftriviaQuestions.count)
         let triviaQuestions = listOftriviaQuestions[indexOfSelectedQuestion]
+        //while loop to prevent the app from repeating questions
+        while previousQuestionsArray.contains(indexOfSelectedQuestion) {
+            indexOfSelectedQuestion = GKRandomSource.sharedRandom().nextInt(upperBound: listOftriviaQuestions.count)
+        }
         // questionField.Text needs to be the questions from the trivia array
         questionField.text = triviaQuestions.question
         AnswerAButton.setTitle(triviaQuestions.optionA, for: .normal)
